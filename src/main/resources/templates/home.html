@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/9a437ceb3d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<script src="https://kit.fontawesome.com/9a437ceb3d.js" crossorigin="anonymous"></script>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+  padding: 0 20px;
+  background: #17a2b8;
+}
+::selection{
+  background: rgba(23,162,184,0.3);
+}
+.wrapper{
+  max-width: 700px;
+  width: 100%;
+  margin: 200px auto;
+  padding: 25px 30px 30px 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+.wrapper nav{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.wrapper nav label{
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  color: #17a2b8;
+  font-size: 17px;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+.wrapper nav label:hover{
+  background: rgba(23,162,184,0.3);
+}
+#home:checked ~ nav label.home,
+#dashboard:checked ~ nav label.dashboard,
+#register:checked ~ nav label.register,
+#logout:checked ~ nav label.logout{
+  color: #fff;
+}
+nav label i{
+  padding-right: 7px;
+}
+nav .slider{
+  position: absolute;
+  height: 100%;
+  width: 25%;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 5px;
+  background: #17a2b8;
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#home:checked ~ nav .slider{
+  left: 0%;
+}
+#dashboard:checked ~ nav .slider{
+  left: 25%;
+}
+#register:checked ~ nav .slider{
+  left: 50%;
+}
+#logout:checked ~ nav .slider{
+  left: 75%;
+}
+
+section .content{
+  display: none;
+  background: #fff;
+}
+#home:checked ~ section .content-1,
+#dashboard:checked ~ section .content-2,
+#register:checked ~ section .content-3,
+#logout:checked ~ section .content-4 {
+  display: block;
+}
+section .content .title{
+  font-size: 21px;
+  font-weight: 500;
+  margin: 30px 0 10px 0;
+}
+section .content p{
+text-align: justify;
+}
+</style>
+<style> .button-9 { appearance: button; backface-visibility: hidden; background-color: #405cf5; border-radius: 6px; border-width: 0; box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; box-sizing: border-box; color: #fff; cursor: pointer; font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif; font-size: 100%; height: 44px; line-height: 1.15; margin: 12px 0 0; outline: none; overflow: hidden; padding: 0 25px; position: relative; text-align: center; text-transform: none; transform: translateZ(0); transition: all .2s,box-shadow .08s ease-in; user-select: none; -webkit-user-select: none; touch-action: manipulation; width: 100%; }
+    .button-9:disabled { cursor: default; } .button-9:focus { box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px; }</style>
+<div class="wrapper">
+    <header>My Bank</header>
+    <input type="radio" name="slider" checked id="home">
+    <input type="radio" name="slider" id="dashboard">
+    <input type="radio" name="slider" id="register">
+    <input type="radio" name="slider" id="logout">
+    <nav>
+        <label for="home" class="home"><i class="fas fa-home"></i>Home</label>
+        <label for="dashboard" class="dashboard"><i class="far fa-credit-card"></i>Dashboard</label>
+        <label for="register" class="register"><i class="fas fa-user-plus"></i>Register</label>
+        <label for="logout" class="logout"><i class="fas fa-directions"></i>Logout</label>
+        <div class="slider"></div>
+    </nav>
+    <section>
+        <div class="content content-1">
+            <div class="title">Ce este acesta?</div>
+            <p>Acesta este un proiect facut pentru Generatia Tech de catre Mihai-Alexandru, in mare am facut aici o apicatie de banca, unde iti poti creea un cont si poti alimenta acest cont
+                si poti trimite bani la alte conturi din baza de date. In acest proiect am folosit (CrudRepository, h2, Spring Security, Thymeleaf). Totul este salvat intr-o baza de
+                data embedded si folosesc CrudRepository.</p>
+            <h4>Primul pas pentru a ne putea loga este de a creea un cont si dupa a accesa dashboard-ul.</h4>
+        </div>
+        <div class="content content-2">
+            <div class="title">Aici poti vedea contul</div>
+            <p>Pentru a te intra in dashboard-ul contului trebuie sa aveti un cont creeat, acesta se poate creea in tab-ul de register</p>
+            <button class="button-9" onclick="location.href='/dashboard'">Acceseaza dashboard-ul</button>
+        </div>
+        <div class="content content-3">
+            <div class="title">Register</div>
+            <button class="button-9" onclick="location.href='/register'">Creeaza un cont nou</button>
+        </div>
+        <div class="content content-4">
+            <div class="title">Logout</div>
+            <button class="button-9" onclick="location.href='/logout'">Logout</button>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Handling Form Submission</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://kit.fontawesome.com/9a437ceb3d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<style>*{box-sizing:border-box}body{font-family:"Open Sans";background:#2c3e50;color:#ecf0f1;line-height:1.618em}.wrapper{max-width:50rem;width:100%;margin:0 auto}.tabs{position:relative;margin:3rem 0;background:#1abc9c;height:14.75rem}.tabs::before,.tabs::after{content:"";display:table}.tabs::after{clear:both}.tab{float:left}.tab-switch{display:none}.tab-label{position:relative;display:block;line-height:2.75em;height:3em;padding:0 1.618em;background:#1abc9c;border-right:.125rem solid #16a085;color:#fff;cursor:pointer;top:0;transition:all .25s}.tab-label:hover{top:-.25rem;transition:top .25s}.tab-content{height:12rem;position:absolute;z-index:1;top:2.75em;left:0;padding:1.618rem;background:#fff;color:#2c3e50;border-bottom:.25rem solid #bdc3c7;opacity:0;transition:all .35s}.tab-switch:checked + .tab-label{background:#fff;color:#2c3e50;border-bottom:0;border-right:.125rem solid #fff;transition:all .35s;z-index:1;top:-.0625rem}.tab-switch:checked + label + .tab-content{z-index:2;opacity:1;transition:all .35s}</style>
+<style> .button-9 { appearance: button; backface-visibility: hidden; background-color: #405cf5; border-radius: 6px; border-width: 0; box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0; box-sizing: border-box; color: #fff; cursor: pointer; font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif; font-size: 100%; height: 44px; line-height: 1.15; margin: 12px 0 0; outline: none; overflow: hidden; padding: 0 25px; position: relative; text-align: center; text-transform: none; transform: translateZ(0); transition: all .2s,box-shadow .08s ease-in; user-select: none; -webkit-user-select: none; touch-action: manipulation; width: 100%; } .button-9:disabled { cursor: default; } .button-9:focus { box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px; }</style>
+<div class="wrapper">
+    <div class="tabs">
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+            <label for="tab-1" class="tab-label">Dashboard</label>
+            <div class="tab-content">
+                <h2 th:text = "'Detii ' + ${money} + ' lei'"></h2>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+            <label for="tab-2" class="tab-label">Transfer</label>
+            <div class="tab-content">
+                <button class="button-9" role="button" onclick="location.href='../../../../transfer'">Transfer</button>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+            <label for="tab-3" class="tab-label">Alimentare</label>
+            <div class="tab-content">
+                <button class="button-9" role="button" onclick="location.href='../../../../alimentare'">Alimentare</button>
+            </div>
+        </div>
+    </div>
+    <table th:object="${logs}" id="userTable" border="1">
+        <tr th:each="log :${logs}">
+            <td th:style="${log.green} ? 'background-color: green' : 'background-color: red' " th:text="${log.s}"></td>
+        </tr>
+    </table>
+</div>
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+</body>
+</html>
